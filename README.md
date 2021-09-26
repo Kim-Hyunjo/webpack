@@ -21,15 +21,3 @@ npm run dev
 ```
 npm run build
 ```
-
-## Dependency
-
-- webpack webpack-cli
-- style-loader css-loader node-sass sass-loader
-- babel-loader babel-core babel-preset-es2015
-- html-webpack-plugin
-- mini-css-extract-plugin
-
-## Stylesheets
-
-- base.css: css 속성 초기화에 사용

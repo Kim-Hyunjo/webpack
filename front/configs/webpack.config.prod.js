@@ -10,7 +10,7 @@ const webpackConfigProd = {
     mode: 'production',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, '../dist/js/')
+        path: path.resolve(__dirname, '../dist/')
     },
     module: {
         rules: [{
@@ -19,17 +19,17 @@ const webpackConfigProd = {
                 MiniCssExtractPlugin.loader,
                 'css-loader',
             ]
+        },
+        {
+            test: /\.(ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            loader: 'url-loader',
+            options: {
+                name: '[name].[ext]',
+                limit: 10000,
+            },
         }]
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            filename: '../index.html',
-            inject: false,
-        }),
-        new MiniCssExtractPlugin({
-            filename: `../css/base.css`,
-        })
-    ]
+
 };
 
 module.exports = merge(webpackConfigCommon, webpackConfigProd);

@@ -1,34 +1,30 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const webpackConfigDev = {
     mode: 'development',
     output: {
-        path: path.join(__dirname, '/javascripts'),
+        path: path.join(__dirname, '/dist'),
         filename: 'bundle.js',
-        publicPath: '/javascripts'
+        publicPath: '/'
     },
     module: {
         rules: [{
-            test: /\.css/,
+            test: /.(css|sass|scss)$/,
             use: [
                 'style-loader',
                 'css-loader',
+                'sass-loader',
             ]
         }]
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html',
-        }),
-    ],
+
     devServer: {
         hot: false,
         host: '0.0.0.0',
         port: 3000,
         static: {
-            directory: path.join(__dirname, '../src'),
+            directory: path.join(__dirname, '../'),
         },
     },
     devtool: 'eval-cheap-module-source-map'
